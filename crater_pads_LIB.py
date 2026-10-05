@@ -287,6 +287,19 @@ def calc_crater_wall(x, crater_profile):
 #######################################################
 
 
+def signed_surface_slope(x0, profile, half_window=2.0):
+    ''' [surface-ref patch] Signed local surface slope [deg] at x0, positive when the ground
+    rises in the +x direction. Uses central difference of interpolated heights over
+    +/- half_window [m]. calc_crater_wall() returns |slope| only, so it cannot be used here.
+    '''
+    y_plus  = calc_crater_wall(x0 + half_window, profile)[0]
+    y_minus = calc_crater_wall(x0 - half_window, profile)[0]
+    return np.rad2deg(np.arctan((y_plus - y_minus) / (2. * half_window)))
+
+
+#######################################################
+
+
 def make_artificial_landing_pads(save_dir, wall_heights=np.arange(5,35,5), wall_radii=np.arange(20, 220, 20)):
     ''' ####### NOT USED ############# 
     
@@ -705,7 +718,7 @@ def new_run_particle_sim_array(input_arr, xlim=10_000, ylim=10_000, verbose=Fals
     vy = vy[mask]
     
     v        = np.sqrt(vx**2 + vy**2)
-    theta    = np.rad2deg(np.tan(vy[-1] / vx[-1]))    
+    theta    = np.rad2deg(np.arctan(vy[-1] / vx[-1]))    
     slope    = calc_crater_wall(x[-1], profile)[1]
     impact_v = v[-1]
 
@@ -784,6 +797,12 @@ def run_particle_sim_array(input_arr, xlim=10_000, ylim=10_000, verbose=False, m
     y_wall  = y0 + (vy0 * t_wall) + (0.5 * (-g) * t_wall**2)
     
     t_floor = (2 * vy0) / g
+        # [surface-ref patch] downward launch (vy0 < 0, only possible with surface_ref=True):
+        # the original window (time to return to launch height) is negative. Use the time to
+        # fall to 1 m below the lowest point of the profile instead. vy0 >= 0 is unchanged.
+    if(vy0 < 0):
+        drop    = y0 - np.min(profile.y) + 1.
+        t_floor = (vy0 + np.sqrt(vy0**2 + 2*g*drop)) / g
         
         # set simulation time to the time it takes to hit the crater floor again
     seconds = t_floor
@@ -893,7 +912,7 @@ def run_particle_sim_array(input_arr, xlim=10_000, ylim=10_000, verbose=False, m
         return []
         
     slope      = calc_crater_wall(x[-1], profile)[1]
-    theta      = np.rad2deg(np.tan(vy[-1] / vx[-1]))
+    theta      = np.rad2deg(np.arctan(vy[-1] / vx[-1]))
     impact_v   = np.sqrt(vx[-1]**2 + vy[-1]**2)
     
     ret_mask = np.where(abs(x) < plot_lim+1)
@@ -1006,7 +1025,7 @@ def new_simulate_PSI_with_crater(crater_profile_fname, v0s, degs, x0s=[0], y0s=[
     rev_y     = np.asarray(list(reversed(y)))
     rev_theta = np.asarray(list(reversed(theta)))
     
-    rev_crater_profile = Crater_Profile(rev_x, rev_y, theta, width, depth, 'rev', maxdeg, -1*r_rim, abs(l_rim))
+    rev_crater_profile = Crater_Profile(rev_x, rev_y, rev_theta, width, depth, 'rev', maxdeg, -1*r_rim, abs(l_rim))
 
 
     ''' Collect Particles and Prep saving '''
@@ -1293,7 +1312,7 @@ def new_simulate_PSI_with_crater(crater_profile_fname, v0s, degs, x0s=[0], y0s=[
 
 
 
-def simulate_PSI_with_crater(crater_profile_fname, v0s, degs, x0s=[0], y0s=[1], dt=0.01, seconds=10, n_free_cores=4, plotting_width=1.5, plot=True, old_tracks_img=False):
+def simulate_PSI_with_crater(crater_profile_fname, v0s, degs, x0s=[0], y0s=[1], dt=0.01, seconds=10, n_free_cores=4, plotting_width=1.5, plot=True, old_tracks_img=False, surface_ref=False, pair_mirror=False):
     ''' Simulate a plume surface interaction using a given crater profile
     and a list of initial starting parameters. All units in meters, seconds, and m/s
         
@@ -1367,7 +1386,7 @@ def simulate_PSI_with_crater(crater_profile_fname, v0s, degs, x0s=[0], y0s=[1], 
     rev_y     = np.asarray(list(reversed(y)))
     rev_theta = np.asarray(list(reversed(theta)))
     
-    rev_crater_profile = Crater_Profile(rev_x, rev_y, theta, width, depth, 'rev', maxdeg, -1*r_rim, abs(l_rim))
+    rev_crater_profile = Crater_Profile(rev_x, rev_y, rev_theta, width, depth, 'rev', maxdeg, -1*r_rim, abs(l_rim))
 
 
     ''' Collect Particles and Prep saving '''
@@ -1377,14 +1396,24 @@ def simulate_PSI_with_crater(crater_profile_fname, v0s, degs, x0s=[0], y0s=[1], 
     particle_list     = []
     rev_particle_list = []
 
+    # [surface-ref patch]
+    #   surface_ref=False reproduces Anderson et al. (2026): degs measured from the horizontal.
+    #   surface_ref=True adds the signed local surface slope at the launch point, so degs are
+    #     measured from the local surface (ejecta sheet follows the ground).
+    #   pair_mirror=True launches the mirrored (-x) ejecta from -x0 on the reversed profile, i.e.
+    #     from the same physical landing point as the +x ejecta. Default False keeps the original
+    #     behavior, which is only equivalent when x0s is symmetric about 0.
     for y0 in y0s:
         for x0 in x0s:
+            x0_rev = -x0 if pair_mirror else x0
+            s_fwd  = signed_surface_slope(x0,     crater_profile)     if surface_ref else 0.
+            s_rev  = signed_surface_slope(x0_rev, rev_crater_profile) if surface_ref else 0.
             for v0 in v0s:
-    	        for deg in degs:
-    		        vx0 = v0 * np.cos(np.deg2rad(deg))
-    		        vy0 = v0 * np.sin(np.deg2rad(deg))
-    		        particle_list.append(    [vx0, vy0, x0, y0, dt, seconds,     crater_profile,     ret_list, width*plotting_width])
-    		        rev_particle_list.append([vx0, vy0, x0, y0, dt, seconds, rev_crater_profile, rev_ret_list, width*plotting_width])
+                for deg in degs:
+                    a_fwd = np.deg2rad(deg + s_fwd)
+                    a_rev = np.deg2rad(deg + s_rev)
+                    particle_list.append(    [v0*np.cos(a_fwd), v0*np.sin(a_fwd), x0,     y0, dt, seconds,     crater_profile,     ret_list, width*plotting_width])
+                    rev_particle_list.append([v0*np.cos(a_rev), v0*np.sin(a_rev), x0_rev, y0, dt, seconds, rev_crater_profile, rev_ret_list, width*plotting_width])
     
 
     
