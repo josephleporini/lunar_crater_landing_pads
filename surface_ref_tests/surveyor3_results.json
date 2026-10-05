@@ -1,0 +1,210 @@
+{
+ "slope_line_deg": -4.790194293574886,
+ "slope_wp1_deg": -7.0,
+ "results": [
+  {
+   "case": "horizontal 0-20 (Anderson et al.) | A: Anderson code",
+   "n": 47838,
+   "dropped": 238,
+   "truncated_midair": 275,
+   "impact_before_surveyor": 196,
+   "cross_surveyor": 47129,
+   "lowest_ejecta_above_surveyor_ground_m": 0.13,
+   "hit_camera_window": 5,
+   "hit_spacecraft_0_to_3m": 23,
+   "cam_speed_min": 21,
+   "cam_speed_median": 21,
+   "cam_frac_speed_ge_100": 0.0,
+   "cam_arrival_elev_deg_median": -21.95,
+   "cam_launch_angle_range_deg": [
+    4.7,
+    16.0
+   ]
+  },
+  {
+   "case": "horizontal 0-20 (Anderson et al.) | B: check",
+   "n": 47838,
+   "dropped": 0,
+   "truncated_midair": 0,
+   "impact_before_surveyor": 402,
+   "cross_surveyor": 47436,
+   "lowest_ejecta_above_surveyor_ground_m": 0.05,
+   "hit_camera_window": 6,
+   "hit_spacecraft_0_to_3m": 36,
+   "cam_speed_min": 21,
+   "cam_speed_median": 31,
+   "cam_frac_speed_ge_100": 0.0,
+   "cam_arrival_elev_deg_median": -11.44,
+   "cam_launch_angle_range_deg": [
+    1.1,
+    16.0
+   ]
+  },
+  {
+   "case": "surface 0-20, line slope | A: Anderson code",
+   "n": 47838,
+   "dropped": 0,
+   "truncated_midair": 2516,
+   "impact_before_surveyor": 1620,
+   "cross_surveyor": 43702,
+   "lowest_ejecta_above_surveyor_ground_m": 0.09,
+   "hit_camera_window": 227,
+   "hit_spacecraft_0_to_3m": 1374,
+   "cam_speed_min": 30,
+   "cam_speed_median": 690,
+   "cam_frac_speed_ge_100": 0.952,
+   "cam_arrival_elev_deg_median": -3.44,
+   "cam_launch_angle_range_deg": [
+    -3.49,
+    4.81
+   ]
+  },
+  {
+   "case": "surface 0-20, line slope | B: check",
+   "n": 47838,
+   "dropped": 0,
+   "truncated_midair": 0,
+   "impact_before_surveyor": 2784,
+   "cross_surveyor": 45054,
+   "lowest_ejecta_above_surveyor_ground_m": 0.03,
+   "hit_camera_window": 289,
+   "hit_spacecraft_0_to_3m": 2590,
+   "cam_speed_min": 30,
+   "cam_speed_median": 940,
+   "cam_frac_speed_ge_100": 0.955,
+   "cam_arrival_elev_deg_median": -3.4,
+   "cam_launch_angle_range_deg": [
+    -3.39,
+    4.81
+   ]
+  },
+  {
+   "case": "surface 0-20, WP1 slope -7 | A: Anderson code",
+   "n": 47838,
+   "dropped": 238,
+   "truncated_midair": 5127,
+   "impact_before_surveyor": 4157,
+   "cross_surveyor": 38316,
+   "lowest_ejecta_above_surveyor_ground_m": 0.07,
+   "hit_camera_window": 203,
+   "hit_spacecraft_0_to_3m": 1437,
+   "cam_speed_min": 30,
+   "cam_speed_median": 570,
+   "cam_frac_speed_ge_100": 0.946,
+   "cam_arrival_elev_deg_median": -3.42,
+   "cam_launch_angle_range_deg": [
+    -3.4,
+    4.8
+   ]
+  },
+  {
+   "case": "surface 0-20, WP1 slope -7 | B: check",
+   "n": 47838,
+   "dropped": 0,
+   "truncated_midair": 0,
+   "impact_before_surveyor": 7979,
+   "cross_surveyor": 39859,
+   "lowest_ejecta_above_surveyor_ground_m": 0.03,
+   "hit_camera_window": 315,
+   "hit_spacecraft_0_to_3m": 2589,
+   "cam_speed_min": 30,
+   "cam_speed_median": 850,
+   "cam_frac_speed_ge_100": 0.959,
+   "cam_arrival_elev_deg_median": -3.41,
+   "cam_launch_angle_range_deg": [
+    -3.4,
+    4.8
+   ]
+  },
+  {
+   "case": "horizontal 1-3 (Immer band) | A: Anderson code",
+   "n": 4998,
+   "dropped": 0,
+   "truncated_midair": 82,
+   "impact_before_surveyor": 0,
+   "cross_surveyor": 4916,
+   "lowest_ejecta_above_surveyor_ground_m": 4.72,
+   "hit_camera_window": 0,
+   "hit_spacecraft_0_to_3m": 0
+  },
+  {
+   "case": "horizontal 1-3 (Immer band) | B: check",
+   "n": 4998,
+   "dropped": 0,
+   "truncated_midair": 0,
+   "impact_before_surveyor": 63,
+   "cross_surveyor": 4935,
+   "lowest_ejecta_above_surveyor_ground_m": 1.15,
+   "hit_camera_window": 2,
+   "hit_spacecraft_0_to_3m": 7,
+   "cam_speed_min": 40,
+   "cam_speed_median": 40,
+   "cam_frac_speed_ge_100": 0.0,
+   "cam_arrival_elev_deg_median": -7.94,
+   "cam_launch_angle_range_deg": [
+    1.1,
+    1.2
+   ]
+  },
+  {
+   "case": "surface 1-3, line slope | A: Anderson code",
+   "n": 4998,
+   "dropped": 0,
+   "truncated_midair": 945,
+   "impact_before_surveyor": 271,
+   "cross_surveyor": 3782,
+   "lowest_ejecta_above_surveyor_ground_m": 0.09,
+   "hit_camera_window": 222,
+   "hit_spacecraft_0_to_3m": 1324,
+   "cam_speed_min": 70,
+   "cam_speed_median": 725,
+   "cam_frac_speed_ge_100": 0.973,
+   "cam_arrival_elev_deg_median": -3.44,
+   "cam_launch_angle_range_deg": [
+    -3.49,
+    -1.89
+   ]
+  },
+  {
+   "case": "surface 1-3, line slope | B: check",
+   "n": 4998,
+   "dropped": 0,
+   "truncated_midair": 0,
+   "impact_before_surveyor": 184,
+   "cross_surveyor": 4814,
+   "lowest_ejecta_above_surveyor_ground_m": 0.05,
+   "hit_camera_window": 281,
+   "hit_spacecraft_0_to_3m": 2336,
+   "cam_speed_min": 70,
+   "cam_speed_median": 980,
+   "cam_frac_speed_ge_100": 0.982,
+   "cam_arrival_elev_deg_median": -3.4,
+   "cam_launch_angle_range_deg": [
+    -3.39,
+    -1.89
+   ]
+  },
+  {
+   "case": "surface 1-3, WP1 slope -7 | A: Anderson code",
+   "n": 4998,
+   "dropped": 0,
+   "truncated_midair": 2630,
+   "impact_before_surveyor": 2368,
+   "cross_surveyor": 0,
+   "lowest_ejecta_above_surveyor_ground_m": Infinity,
+   "hit_camera_window": 0,
+   "hit_spacecraft_0_to_3m": 0
+  },
+  {
+   "case": "surface 1-3, WP1 slope -7 | B: check",
+   "n": 4998,
+   "dropped": 0,
+   "truncated_midair": 0,
+   "impact_before_surveyor": 4998,
+   "cross_surveyor": 0,
+   "lowest_ejecta_above_surveyor_ground_m": Infinity,
+   "hit_camera_window": 0,
+   "hit_spacecraft_0_to_3m": 0
+  }
+ ]
+}
