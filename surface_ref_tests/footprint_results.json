@@ -1,0 +1,451 @@
+{
+ "sweep_center_line_1to3": [
+  [
+   -9.0,
+   0,
+   0
+  ],
+  [
+   -8.5,
+   0,
+   0
+  ],
+  [
+   -8.0,
+   0,
+   0
+  ],
+  [
+   -7.5,
+   0,
+   0
+  ],
+  [
+   -7.0,
+   0,
+   0
+  ],
+  [
+   -6.5,
+   0,
+   0
+  ],
+  [
+   -6.0,
+   446,
+   446
+  ],
+  [
+   -5.5,
+   454,
+   453
+  ],
+  [
+   -5.0,
+   457,
+   453
+  ],
+  [
+   -4.5,
+   458,
+   453
+  ],
+  [
+   -4.0,
+   17,
+   10
+  ],
+  [
+   -3.5,
+   8,
+   0
+  ],
+  [
+   -3.0,
+   5,
+   0
+  ],
+  [
+   -2.5,
+   4,
+   0
+  ],
+  [
+   -2.0,
+   2,
+   0
+  ],
+  [
+   -1.5,
+   4,
+   0
+  ],
+  [
+   -1.0,
+   2,
+   0
+  ]
+ ],
+ "footprint": [
+  {
+   "Rs": 3.0,
+   "ref": "horizontal",
+   "band": [
+    0.0,
+    20.0
+   ],
+   "source_points": 29,
+   "slope_median": 0.0,
+   "slope_range": [
+    0,
+    0
+   ],
+   "camera_hits": 170,
+   "fast_hits": 0,
+   "points_delivering_fast": 0,
+   "fast_per_1e4": 0.0,
+   "fast_speed_median": null,
+   "fast_arrival_elev_median": null
+  },
+  {
+   "Rs": 3.0,
+   "ref": "horizontal",
+   "band": [
+    1.0,
+    3.0
+   ],
+   "source_points": 29,
+   "slope_median": 0.0,
+   "slope_range": [
+    0,
+    0
+   ],
+   "camera_hits": 57,
+   "fast_hits": 0,
+   "points_delivering_fast": 0,
+   "fast_per_1e4": 0.0,
+   "fast_speed_median": null,
+   "fast_arrival_elev_median": null
+  },
+  {
+   "Rs": 3.0,
+   "ref": "fwd10",
+   "band": [
+    1.0,
+    3.0
+   ],
+   "source_points": 29,
+   "slope_median": -7.55,
+   "slope_range": [
+    -8.19,
+    -6.84
+   ],
+   "camera_hits": 0,
+   "fast_hits": 0,
+   "points_delivering_fast": 0,
+   "fast_per_1e4": 0.0,
+   "fast_speed_median": null,
+   "fast_arrival_elev_median": null
+  },
+  {
+   "Rs": 3.0,
+   "ref": "ctr",
+   "band": [
+    1.0,
+    3.0
+   ],
+   "source_points": 29,
+   "slope_median": -5.5,
+   "slope_range": [
+    -7.12,
+    -2.37
+   ],
+   "camera_hits": 5634,
+   "fast_hits": 5560,
+   "points_delivering_fast": 16,
+   "fast_per_1e4": 383.6,
+   "fast_speed_median": 1270,
+   "fast_arrival_elev_median": -3.4
+  },
+  {
+   "Rs": 3.0,
+   "ref": "fwd10",
+   "band": [
+    0.0,
+    20.0
+   ],
+   "source_points": 29,
+   "slope_median": -7.55,
+   "slope_range": [
+    -8.19,
+    -6.84
+   ],
+   "camera_hits": 12066,
+   "fast_hits": 11692,
+   "points_delivering_fast": 29,
+   "fast_per_1e4": 84.28,
+   "fast_speed_median": 1190,
+   "fast_arrival_elev_median": -3.4
+  },
+  {
+   "Rs": 3.0,
+   "ref": "ctr",
+   "band": [
+    0.0,
+    20.0
+   ],
+   "source_points": 29,
+   "slope_median": -5.5,
+   "slope_range": [
+    -7.12,
+    -2.37
+   ],
+   "camera_hits": 11364,
+   "fast_hits": 10982,
+   "points_delivering_fast": 27,
+   "fast_per_1e4": 79.16,
+   "fast_speed_median": 1260,
+   "fast_arrival_elev_median": -3.39
+  },
+  {
+   "Rs": 6.0,
+   "ref": "horizontal",
+   "band": [
+    0.0,
+    20.0
+   ],
+   "source_points": 113,
+   "slope_median": 0.0,
+   "slope_range": [
+    0,
+    0
+   ],
+   "camera_hits": 655,
+   "fast_hits": 0,
+   "points_delivering_fast": 0,
+   "fast_per_1e4": 0.0,
+   "fast_speed_median": null,
+   "fast_arrival_elev_median": null
+  },
+  {
+   "Rs": 6.0,
+   "ref": "horizontal",
+   "band": [
+    1.0,
+    3.0
+   ],
+   "source_points": 113,
+   "slope_median": 0.0,
+   "slope_range": [
+    0,
+    0
+   ],
+   "camera_hits": 208,
+   "fast_hits": 0,
+   "points_delivering_fast": 0,
+   "fast_per_1e4": 0.0,
+   "fast_speed_median": null,
+   "fast_arrival_elev_median": null
+  },
+  {
+   "Rs": 6.0,
+   "ref": "fwd10",
+   "band": [
+    1.0,
+    3.0
+   ],
+   "source_points": 113,
+   "slope_median": -7.25,
+   "slope_range": [
+    -9.32,
+    -3.65
+   ],
+   "camera_hits": 6928,
+   "fast_hits": 6893,
+   "points_delivering_fast": 21,
+   "fast_per_1e4": 122.05,
+   "fast_speed_median": 1270,
+   "fast_arrival_elev_median": -3.36
+  },
+  {
+   "Rs": 6.0,
+   "ref": "ctr",
+   "band": [
+    1.0,
+    3.0
+   ],
+   "source_points": 113,
+   "slope_median": -5.61,
+   "slope_range": [
+    -7.65,
+    0.64
+   ],
+   "camera_hits": 12024,
+   "fast_hits": 11810,
+   "points_delivering_fast": 36,
+   "fast_per_1e4": 209.11,
+   "fast_speed_median": 1270,
+   "fast_arrival_elev_median": -3.37
+  },
+  {
+   "Rs": 6.0,
+   "ref": "fwd10",
+   "band": [
+    0.0,
+    20.0
+   ],
+   "source_points": 113,
+   "slope_median": -7.25,
+   "slope_range": [
+    -9.32,
+    -3.65
+   ],
+   "camera_hits": 48168,
+   "fast_hits": 46705,
+   "points_delivering_fast": 113,
+   "fast_per_1e4": 86.4,
+   "fast_speed_median": 1230,
+   "fast_arrival_elev_median": -3.35
+  },
+  {
+   "Rs": 6.0,
+   "ref": "ctr",
+   "band": [
+    0.0,
+    20.0
+   ],
+   "source_points": 113,
+   "slope_median": -5.61,
+   "slope_range": [
+    -7.65,
+    0.64
+   ],
+   "camera_hits": 35155,
+   "fast_hits": 33777,
+   "points_delivering_fast": 89,
+   "fast_per_1e4": 62.48,
+   "fast_speed_median": 1220,
+   "fast_arrival_elev_median": -3.33
+  },
+  {
+   "Rs": 10.0,
+   "ref": "horizontal",
+   "band": [
+    0.0,
+    20.0
+   ],
+   "source_points": 317,
+   "slope_median": 0.0,
+   "slope_range": [
+    0,
+    0
+   ],
+   "camera_hits": 1828,
+   "fast_hits": 0,
+   "points_delivering_fast": 0,
+   "fast_per_1e4": 0.0,
+   "fast_speed_median": null,
+   "fast_arrival_elev_median": null
+  },
+  {
+   "Rs": 10.0,
+   "ref": "horizontal",
+   "band": [
+    1.0,
+    3.0
+   ],
+   "source_points": 317,
+   "slope_median": 0.0,
+   "slope_range": [
+    0,
+    0
+   ],
+   "camera_hits": 573,
+   "fast_hits": 0,
+   "points_delivering_fast": 0,
+   "fast_per_1e4": 0.0,
+   "fast_speed_median": null,
+   "fast_arrival_elev_median": null
+  },
+  {
+   "Rs": 10.0,
+   "ref": "fwd10",
+   "band": [
+    1.0,
+    3.0
+   ],
+   "source_points": 317,
+   "slope_median": -6.86,
+   "slope_range": [
+    -10.25,
+    0.56
+   ],
+   "camera_hits": 26908,
+   "fast_hits": 26580,
+   "points_delivering_fast": 86,
+   "fast_per_1e4": 167.76,
+   "fast_speed_median": 1260,
+   "fast_arrival_elev_median": -3.3
+  },
+  {
+   "Rs": 10.0,
+   "ref": "ctr",
+   "band": [
+    1.0,
+    3.0
+   ],
+   "source_points": 317,
+   "slope_median": -5.31,
+   "slope_range": [
+    -8.97,
+    2.24
+   ],
+   "camera_hits": 32643,
+   "fast_hits": 32140,
+   "points_delivering_fast": 97,
+   "fast_per_1e4": 202.86,
+   "fast_speed_median": 1260,
+   "fast_arrival_elev_median": -3.26
+  },
+  {
+   "Rs": 10.0,
+   "ref": "fwd10",
+   "band": [
+    0.0,
+    20.0
+   ],
+   "source_points": 317,
+   "slope_median": -6.86,
+   "slope_range": [
+    -10.25,
+    0.56
+   ],
+   "camera_hits": 124216,
+   "fast_hits": 120187,
+   "points_delivering_fast": 296,
+   "fast_per_1e4": 79.25,
+   "fast_speed_median": 1230,
+   "fast_arrival_elev_median": -3.28
+  },
+  {
+   "Rs": 10.0,
+   "ref": "ctr",
+   "band": [
+    0.0,
+    20.0
+   ],
+   "source_points": 317,
+   "slope_median": -5.31,
+   "slope_range": [
+    -8.97,
+    2.24
+   ],
+   "camera_hits": 90863,
+   "fast_hits": 87189,
+   "points_delivering_fast": 225,
+   "fast_per_1e4": 57.49,
+   "fast_speed_median": 1220,
+   "fast_arrival_elev_median": -3.24
+  }
+ ]
+}
