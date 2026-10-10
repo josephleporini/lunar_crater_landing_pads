@@ -16,3 +16,14 @@ Run (no display needed; tkinter is only used for file dialogs):
 - footprint_run.py + geo.py: extended-source (footprint) runs on the full DTM, slope-definition comparison.
   Needs NAC_DTM_APOLLO12.TIF (LROC RDR, not included): A12_DTM=/path/NAC_DTM_APOLLO12.TIF python3 footprint_run.py
   Georeferencing in geo.py verified against profile_N49W.csv to 0.005 m.
+
+## Alignment with Topic A Draft 12 (2026-10-10)
+- Vocabulary follows Draft 12: theta_launch = alpha + k*beta. k = 0 is the "horizontal reference",
+  k > 0 is "slope-coupled launch", k = 1 is "full slope following". Earlier files here say
+  "surface reference" for k = 1.
+- Draft 12 beta = forward least-squares fit over the first 10 m toward the receptor
+  (crater_pads_LIB.forward_fit_slope; -7.7 deg at the Apollo 12 touchdown point).
+- ksweep_run.py reproduces the Draft 12 Sec. 4.3 k thresholds with the Anderson et al. speed grid
+  (ksweep_results.json): k <= 0.3 none of 113 points; k 0.4: 9; k 0.5: 63; k 0.6-0.8: 101-110.
+- Superseded here: the "centered vs forward-fit slope" framing in footprint_run.py. Draft 12 treats
+  the difference as coupling k (about half the slope), not as an ambiguity in beta.

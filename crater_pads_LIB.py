@@ -300,6 +300,19 @@ def signed_surface_slope(x0, profile, half_window=2.0):
 #######################################################
 
 
+def forward_fit_slope(x0, profile, length=10.0, step=0.5):
+    ''' [slope-coupling patch] Draft 12 beta: arctan of a least-squares line fit to the profile over
+    the first `length` m from x0 in the +x (launch) direction, in degrees. Negative = ground falls
+    toward the receptor.
+    '''
+    xs = np.arange(x0, x0 + length + 1e-9, step)
+    ys = np.array([calc_crater_wall(xx, profile)[0] for xx in xs])
+    return np.rad2deg(np.arctan(np.polyfit(xs - x0, ys, 1)[0]))
+
+
+#######################################################
+
+
 def make_artificial_landing_pads(save_dir, wall_heights=np.arange(5,35,5), wall_radii=np.arange(20, 220, 20)):
     ''' ####### NOT USED ############# 
     
@@ -1312,7 +1325,7 @@ def new_simulate_PSI_with_crater(crater_profile_fname, v0s, degs, x0s=[0], y0s=[
 
 
 
-def simulate_PSI_with_crater(crater_profile_fname, v0s, degs, x0s=[0], y0s=[1], dt=0.01, seconds=10, n_free_cores=4, plotting_width=1.5, plot=True, old_tracks_img=False, surface_ref=False, pair_mirror=False):
+def simulate_PSI_with_crater(crater_profile_fname, v0s, degs, x0s=[0], y0s=[1], dt=0.01, seconds=10, n_free_cores=4, plotting_width=1.5, plot=True, old_tracks_img=False, surface_ref=False, pair_mirror=False, k=None, slope_fit_m=None):
     ''' Simulate a plume surface interaction using a given crater profile
     and a list of initial starting parameters. All units in meters, seconds, and m/s
         
@@ -1398,16 +1411,21 @@ def simulate_PSI_with_crater(crater_profile_fname, v0s, degs, x0s=[0], y0s=[1], 
 
     # [surface-ref patch]
     #   surface_ref=False reproduces Anderson et al. (2026): degs measured from the horizontal.
-    #   surface_ref=True adds the signed local surface slope at the launch point, so degs are
-    #     measured from the local surface (ejecta sheet follows the ground).
+    #   Slope coupling (Topic A Draft 12, Eq. 2): theta_launch = alpha + k*beta.
+    #     k = 0 is the horizontal reference; k = 1 is full slope following.
+    #     k=None keeps the earlier switch: surface_ref=True means k = 1, False means k = 0.
+    #     beta: slope_fit_m=None uses signed_surface_slope (centered, +/-2 m); slope_fit_m=10 uses the
+    #     Draft 12 definition (forward least-squares fit over the first 10 m toward the receptor).
     #   pair_mirror=True launches the mirrored (-x) ejecta from -x0 on the reversed profile, i.e.
     #     from the same physical landing point as the +x ejecta. Default False keeps the original
     #     behavior, which is only equivalent when x0s is symmetric about 0.
     for y0 in y0s:
         for x0 in x0s:
             x0_rev = -x0 if pair_mirror else x0
-            s_fwd  = signed_surface_slope(x0,     crater_profile)     if surface_ref else 0.
-            s_rev  = signed_surface_slope(x0_rev, rev_crater_profile) if surface_ref else 0.
+            kk     = (1.0 if surface_ref else 0.0) if k is None else float(k)
+            slope  = (lambda xx, pr: forward_fit_slope(xx, pr, slope_fit_m)) if slope_fit_m else signed_surface_slope
+            s_fwd  = kk * slope(x0,     crater_profile)     if kk else 0.
+            s_rev  = kk * slope(x0_rev, rev_crater_profile) if kk else 0.
             for v0 in v0s:
                 for deg in degs:
                     a_fwd = np.deg2rad(deg + s_fwd)
